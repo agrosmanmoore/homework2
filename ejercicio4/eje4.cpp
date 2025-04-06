@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Clase abstracta CuentaBancaria
+// Clase abstracta CuentaF
 
 class Cuenta {
 
@@ -37,7 +37,7 @@ public:
     virtual ~Cuenta() = default;
 };
 
-// Clase CuentaAhorros (derivada de CuentaBancaria)
+// Clase CuentaAhorros (derivada de Cuenta)
 class CuentaAhorros : public Cuenta {
 
 private:
@@ -64,7 +64,7 @@ public:
     }
 };
 
-// Clase CuentaCorriente (derivada de CuentaBancaria)
+// Clase CuentaCorriente (derivada de Cuenta)
 
 class CuentaCorriente : public Cuenta {
     
