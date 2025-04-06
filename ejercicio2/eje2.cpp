@@ -50,7 +50,7 @@ public:
     // Constructor de copia profunda
     Curso(const Curso& otro) {
         for (Estudiante* e : otro.estudiantes) {
-            estudiantes.push_back(new Estudiante(*e));  // Deep copy
+            estudiantes.push_back(new Estudiante(*e));  // Deep copy (Si se usara una shallow copy, ambos cursos compartirían los mismos punteros, lo que causaría problemas como modificaciones no deseadas entre cursos, errores de doble liberación de memoria al destruirlos, etc.)
         }
     }
 
