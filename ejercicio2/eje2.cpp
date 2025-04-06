@@ -6,6 +6,7 @@
 using namespace std;
 
 class Estudiante {
+
 private:
     string nombre;
     int n_legajo;
@@ -38,6 +39,7 @@ public:
 };
 
 class Curso {
+
 private:
     vector<Estudiante*> estudiantes;
 
@@ -118,7 +120,8 @@ void menu() {
         cout << "1. Mostrar estudiantes ordenados\n";
         cout << "2. Copiar curso y mostrar copia\n";
         cout << "3. Desinscribir estudiante\n";
-        cout << "4. Salir\n";
+        cout << "4. Inscribir estudiante\n";
+        cout << "5. Salir\n";
         cout << "Ingrese una opción: ";
         cin >> opcion;
 
@@ -139,7 +142,31 @@ void menu() {
                 curso1.desinscribir(legajo);
                 break;
             }
-            case 4:
+
+            case 4: {
+                string nombre;
+                int legajo;
+                vector<int> notas;
+
+                cout << "Ingrese el nombre del estudiante: ";
+                cin >> nombre;
+                cout << "Ingrese el legajo del estudiante: ";
+                cin >> legajo;
+
+                cout << "Ingrese las notas (separadas por espacio, termine con -1): ";
+                int nota;
+                while (true) {
+                    cin >> nota;
+                    if (nota == -1) break;
+                    notas.push_back(nota);
+                }
+
+                Estudiante* nuevoEstudiante = new Estudiante(nombre, legajo, notas);
+                curso1.agregarEstudiante(nuevoEstudiante);
+                break;
+            }
+
+            case 5:
                 cout << "Saliendo...\n";
                 break;
             default:

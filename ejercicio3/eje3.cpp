@@ -18,6 +18,7 @@ public:
 
 // Clase Entero
 class Entero : public Numero<Entero> {
+    
 private:
     int valor;
     

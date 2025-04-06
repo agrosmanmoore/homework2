@@ -4,9 +4,13 @@
 using namespace std;
 
 // Clase abstracta CuentaBancaria
+
 class Cuenta {
+
 protected:
+
     double balance;
+
     string titularCuenta;
 
 public:
@@ -63,6 +67,7 @@ public:
 // Clase CuentaCorriente (derivada de CuentaBancaria)
 
 class CuentaCorriente : public Cuenta {
+    
 private:
 
     double limiteSobregiro;
