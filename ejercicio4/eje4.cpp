@@ -20,10 +20,14 @@ public:
     // Método para depositar dinero
     void depositar(double cantidad) {
         if (cantidad > 0) {
+
             balance += cantidad;
             cout << "Depósito exitoso de $" << cantidad << ". Nuevo balance: $" << balance << endl;
+            
         } else {
+
             cout << "La cantidad a depositar debe ser positiva." << endl;
+
         }
     }
 
@@ -49,18 +53,25 @@ public:
     CuentaAhorros(string titular, double saldoInicial, double interes) : Cuenta(titular, saldoInicial), tasaInteres(interes) {}
 
     void retirar(double cantidad) override {
+
         if (cantidad > 0 && cantidad <= balance) {
+
             balance -= cantidad;
             cout << "Retiro exitoso de $" << cantidad << ". Nuevo balance: $" << balance << endl;
+
         } else {
+
             cout << "Fondos insuficientes o cantidad inválida." << endl;
+
         }
     }
 
     void mostrarInfo() const override {
+
         cout << "Cuenta de Ahorros - Titular: " << titularCuenta 
              << ", Balance: $" << balance 
              << ", Tasa de interés: " << tasaInteres << "%" << endl;
+
     }
 };
 
@@ -87,6 +98,7 @@ public:
     }
 
     void mostrarInfo() const override {
+
         cout << "Cuenta Corriente - Titular: " << titularCuenta 
              << ", Balance: $" << balance 
              << ", Límite de sobregiro: $" << limiteSobregiro << endl;

@@ -8,6 +8,7 @@ using namespace std;
 class Estudiante {
 
 private:
+
     string nombre;
     int n_legajo;
     vector<int> notas;
@@ -22,10 +23,12 @@ public:
     int getLegajo() const { return n_legajo; }
 
     int getPromedio() const {
+
         if (notas.empty()) return 0;
         int suma = 0;
         for (int nota : notas) suma += nota;
         return suma / notas.size();
+
     }
 
     // Sobrecarga de "<" para ordenar por nombre
@@ -41,6 +44,7 @@ public:
 class Curso {
 
 private:
+
     vector<Estudiante*> estudiantes;
 
 public:
@@ -49,6 +53,7 @@ public:
 
     // Constructor de copia profunda
     Curso(const Curso& otro) {
+
         for (Estudiante* e : otro.estudiantes) {
             estudiantes.push_back(new Estudiante(*e));  // Deep copy (Si se usara una shallow copy, ambos cursos compartirían los mismos punteros, lo que causaría problemas como modificaciones no deseadas entre cursos, errores de doble liberación de memoria al destruirlos, etc.)
         }
@@ -56,12 +61,15 @@ public:
 
     // Destructor para liberar la memoria
     ~Curso() {
+
         for (Estudiante* e : estudiantes) {
             delete e;
+
         }
     }
 
     void agregarEstudiante(Estudiante* e) {
+
         if (findStudent(e->getLegajo())) {
             cout << "El estudiante ya está inscrito" << endl;
             return;
@@ -74,15 +82,20 @@ public:
     }
 
     bool findStudent(int legajo) const {
+
         for (Estudiante* e : estudiantes) {
             if (e->getLegajo() == legajo) return true;
+
         }
         return false;
     }
 
     void desinscribir(int legajo) {
+
         for (auto it = estudiantes.begin(); it != estudiantes.end(); ++it) {
+
             if ((*it)->getLegajo() == legajo) {
+
                 delete *it;  // Liberar memoria
                 estudiantes.erase(it);  // Eliminar del vector
                 cout << "Estudiante con legajo " << legajo << " eliminado." << endl;
@@ -93,6 +106,7 @@ public:
     }
 
     void imprimirOrdenado() const {
+
         vector<Estudiante*> copia = estudiantes;
         sort(copia.begin(), copia.end(), [](Estudiante* a, Estudiante* b) { return *a < *b; });
 
@@ -104,6 +118,7 @@ public:
 
 void menu() {
     Curso curso1;
+
     vector<Estudiante*> estudiantes = {
         new Estudiante("Carlos", 101, {8, 9, 7}),
         new Estudiante("Ana", 102, {10, 9, 8}),

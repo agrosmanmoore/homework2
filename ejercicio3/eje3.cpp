@@ -6,23 +6,29 @@ using namespace std;
 
 // Plantilla de la interfaz Numero
 template<typename temp>
+
 class Numero {
+
 public:
+
     virtual temp operator+(const temp& otro) const = 0;
     virtual temp operator-(const temp& otro) const = 0;
     virtual temp operator*(const temp& otro) const = 0;
     virtual temp operator/(const temp& otro) const = 0;
     virtual string toString() const = 0;
     virtual ~Numero() = default;
+
 };
 
 // Clase Entero
 class Entero : public Numero<Entero> {
     
 private:
+
     int valor;
     
 public:
+
     Entero(int v) : valor(v) {}
 
     Entero operator+(const Entero& otro) const override {
@@ -49,7 +55,9 @@ public:
 
 // Clase Real
 class Real : public Numero<Real> {
+
 private:
+
     double valor;
 
 public:
@@ -81,11 +89,14 @@ public:
 
 // Clase Complejo
 class Complejo : public Numero<Complejo> {
+
 private:
+
     double real;
     double imaginario;
 
 public:
+
     Complejo(double r, double i) : real(r), imaginario(i) {}
 
     Complejo operator+(const Complejo& otro) const override {
@@ -109,16 +120,19 @@ public:
     }
 
     string toString() const override {
+
         ostringstream stream;
         stream << fixed << setprecision(2) << real;
         if (imaginario >= 0) stream << " + ";
         stream << fixed << setprecision(2) << imaginario << "i";
         return stream.str();
+
     }
 };
 
 // Prueba de las clases
 int main() {
+    
     Entero e1(10), e2(5);
     Real r1(10.5), r2(2.3);
     Complejo c1(3, 4), c2(1, -2);
