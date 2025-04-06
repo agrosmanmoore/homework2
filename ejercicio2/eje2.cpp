@@ -172,7 +172,7 @@ void menu() {
             default:
                 cout << "Opción inválida, intente de nuevo.\n";
         }
-    } while (opcion != 4);
+    } while (opcion != 5);
 
 }
 
